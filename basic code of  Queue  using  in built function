@@ -1,0 +1,27 @@
+package queue;
+
+import java.util.*;
+
+public class basicSTL {
+    public static void main(String[] args) {
+        Queue<Integer> q=new LinkedList<>();
+        System.out.println(q.isEmpty());
+        q.add(1);
+        q.add(4);
+        q.add(45);
+        q.add(32);
+        System.out.println("my Queues");
+        System.out.println(q);
+        System.out.println("Size of my Queue");
+        System.out.println(q.size());
+        System.out.println("to check my Queue is empty");
+        System.out.println(q.isEmpty());
+        System.out.println("Aftr removin element");
+        q.remove();
+        System.out.println(q);
+        q.add(3);
+        q.add(233);
+        System.out.println("My Queues After");
+        System.out.println(q);
+    }
+}
