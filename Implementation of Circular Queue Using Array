@@ -1,0 +1,105 @@
+package queue;
+
+public class ciccularQueueImplementationArray {
+    public static class cqu {
+        int front = -1;
+        int rear = -1;
+        int size = 0;
+        int[] arr = new int[6];
+// we are creare add fundtion
+        public void add(int val) {
+            if (size == arr.length) {
+                System.out.print("Queue is Full !");
+            } else if (size == 0) {
+                front = rear = 0;
+                arr[0] = val;
+            } else if (rear < arr.length - 1) {
+                arr[++rear] = val;
+
+            } else if (rear == arr.length - 1) {
+                rear = 0;
+                arr[0] = val;
+            }
+                size++;
+
+        }
+        //create remove function
+        public int remove() {
+            if (size == 0) {
+                System.out.println("Queue is Empty !");
+                return -1;
+            } else {
+                int val = arr[front];
+                if (front == arr.length - 1) front = 0;
+                else front++;
+                size--;
+                return val;
+            }
+        }
+//Create peek function
+        public int peek()  {
+            if (size == 0) {
+                System.out.println("Queue is Empty !");
+                return -1;
+            }
+            return arr[front];
+        }
+//to check our queue is empty or not empty
+        public boolean isEmpty() {
+            if (size == 0) return true;
+            else return false;
+        }
+//create display function
+        public void dosplay() {
+            if (size == 0) {
+                System.out.println("Queue is Empty");
+                return;
+            } else if (front <= rear) {
+                for (int i = front; i <= rear; i++) {
+                    System.out.print(arr[i] + " ");
+                }
+            }else {
+                for (int i = front; i < arr.length; i++) {
+                    System.out.print(arr[i] + " ");
+                }
+                for (int i = 0; i < rear; i++) {
+                    System.out.print(arr[i] + " ");
+                }
+
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        cqu q = new cqu();
+        System.out.println("to cheak our queue is empty or not");
+        q.dosplay();
+        System.out.println("Afteradding Element ");
+        q.add(2);
+        q.add(5);
+        q.add(78);
+        q.add(211);
+        q.add(980);
+        q.dosplay();
+        System.out.println("After removing element");
+        q.remove();
+        q.dosplay();
+        System.out.println("Size of my queues");
+        System.out.println(q.size);
+        System.out.println("peek of my element of my queue");
+        System.out.println(q.peek());
+    }
+}
+//out ouy of my function'
+//Queue is Empty
+  //      Afteradding Element
+    //    2 5 78 211 980
+      //  After removing element
+        //5 78 211 980
+        //Size of my queues
+       // 4
+       // peek of my element of my queue
+      //  5
+
+        //Process finished with exit code 0
