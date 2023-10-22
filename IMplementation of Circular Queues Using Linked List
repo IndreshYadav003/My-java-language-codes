@@ -1,0 +1,103 @@
+package queue;
+
+public class implementationOfQueueUsingLinkedLIsr {
+public static  class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+    public static class CircularQueue {
+        private Node front;
+        private Node rear;
+
+        public CircularQueue() {
+            front = null;
+            rear = null;
+        }
+//to check our queue id empty or not
+        public boolean isEmpty() {
+            return front == null;
+        }
+//create add function
+        public void add(int data) {
+            Node newNode = new Node(data);
+
+            if (isEmpty()) {
+                front = newNode;
+            } else {
+                rear.next = newNode;
+            }
+
+            rear = newNode;
+            rear.next = front;
+        }
+//create remove function
+        public void remove() {
+            if (isEmpty()) {
+                System.out.println("Queue is empty. Cannot dequeue.");
+                return;
+            }
+
+            if (front == rear) {
+                front = null;
+                rear = null;
+            } else {
+                front = front.next;
+                rear.next = front;
+            }
+        }
+//create peek function
+        public int peek() {
+            if (isEmpty()) {
+                System.out.println("Queue is empty. Cannot peek.");
+                return -1;
+            }
+            return front.data;
+        }
+// create display function
+        public void display() {
+            if (isEmpty()) {
+                System.out.println("Queue is empty.");
+                return;
+            }
+
+            Node temp = front;
+            do {
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            } while (temp != front);
+
+            System.out.println();
+        }
+    }
+        public static void main(String[] args) {
+            CircularQueue queue = new CircularQueue();
+
+            queue.add(1);
+            queue.add(2);
+            queue.add(3);
+            queue.add(4);
+
+            System.out.print("Queue elements: ");
+            queue.display();
+
+            System.out.println("Front element: " + queue.peek());
+
+            queue.remove();
+            queue.remove();
+
+            System.out.print("After two dequeues: ");
+            queue.display();
+        }
+    }
+
+//out put of my function
+//Queue elements: 1 2 3 4
+ //       Front element: 1
+   //     After two dequeues: 3 4
+
