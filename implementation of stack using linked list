@@ -1,0 +1,92 @@
+package Stacks;
+
+public class linkedListImplementationOfStacks {
+    public static class Node {
+        int val;
+        Node next;
+
+        Node(int val) {
+            this.val = val;
+        }
+    }
+    //user define data type
+    public static class llStack {
+        private Node head = null;
+        private int size = 0;
+
+        //create push function
+        void push(int x) {
+            Node temp = new Node(x);
+            temp.next = head;
+            head = temp;
+            size++;
+        }
+
+        // create pop function
+        int pop() {
+            if (head == null) {
+                System.out.println("Stack is Empty !");
+                return -1;
+            }
+            int x = head.val;
+            head = head.next;
+            size--;
+            return x;
+        }//create peek function
+
+        int peek() {
+            if (head == null) {
+                System.out.println("Stack is Empty !");
+                return -1;
+            }
+            return head.val;
+        }
+
+        //display using recursio
+        //display using simple function
+        void display() {
+            Node temp = head;
+            while (temp != null) {
+                System.out.print(temp.val + " ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
+
+        int size() {
+            return size;
+        }
+
+        // check stack is empty or not
+        boolean isEmpty() {
+            if (size == 0) return true;
+            return false;
+        }
+    }
+    public static void main(String[] args) {
+        llStack st = new llStack();
+        System.out.println("we added four element");
+        st.push(4);
+        st.push(343);
+        st.push(23);
+        st.push(245);
+        st.display();
+        System.out.println("size of our stacks");
+        System.out.println(st.size());
+        st.pop();
+        System.out.println("size of our stacks");
+        System.out.println(st.size());
+        System.out.println(st.isEmpty());
+        System.out.println(st.peek());
+
+
+    }
+}
+ //   we added four element
+//245 23 343 4
+  //      size of our stacks
+    //    4
+      //  size of our stacks
+        //3
+        //false
+        //23
