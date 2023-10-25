@@ -1,0 +1,79 @@
+public class arrayImplementationStacks {
+    public static class Stack{
+        private int []arr=new int[4];
+        private int idx=0;
+        // push function
+        void push(int x){
+            if(isFull()){
+                System.out.println("Stack is full!");
+                return;
+            }
+            arr[idx]=x;
+            idx++;
+        }
+        // peek function
+        int peek(){
+            if(idx==0){
+                System.out.println("Stack is empty");
+                return -1;
+            }
+            return arr[idx-1];
+        }
+      //pop function
+      int pop(){
+          if(idx==0){
+              System.out.println("Stack is empty");
+              return -1;
+          }
+          int top=arr[idx-1];
+          arr[idx-1]=0;
+          idx--;
+          return top;
+      }
+      //display function
+        void display(){
+        for(int i=0;i<=idx-1;i++){
+            System.out.print(arr[i]+" ");
+        }
+            System.out.println();
+    }
+    //size function
+    int size(){
+        return idx;
+        }
+        boolean isEmpty(){
+            if(idx==0)return true;
+            else return false;
+        }
+        boolean isFull(){
+            if(idx==arr.length)return true;
+            else return false;
+        }
+        int Capacity(){
+            return  arr.length;
+        }
+    }
+    public static void main(String[] args) {
+        Stack st=new Stack();
+        System.out.println("we added element");
+        st.push(1);
+        st.push(9);
+        st.push(87);
+        st.push(76);
+        st.display();
+        System.out.println("size of our Stack");
+        System.out.println(st.size());
+        System.out.println("removing element");
+        st.pop();
+        System.out.println("size of our Stack");
+        System.out.println(st.size());
+        st.pop();
+    }
+}
+//    we added element
+//        1 9 87 76
+//        size of our Stack
+//        4
+//        removing element
+//        size of our Stack
+//        3
