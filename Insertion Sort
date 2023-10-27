@@ -1,0 +1,55 @@
+package sortingArray;
+
+import java.util.Scanner;
+
+public class insertionSort {
+    // swap two number function
+    static void swap(int []arr,int x,int y){
+        int temp=arr[x];
+        arr[x]=arr[y];
+        arr[y]=temp;
+    }
+    //insertionSort function
+    static void insertionsort(int[]arr){
+        for(int i=1;i< arr.length;i++){
+            for(int j=i;j>0;j=j-1){
+                if(arr[j-1]>arr[j]){
+                   // swap(arr,j-1,j);
+                    int temp=arr[j-1];
+                    arr[j-1]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+    }
+    //display function
+    static void display(int []arr){
+        for(int i=0;i< arr.length;i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Please Enter Length of Array=");
+        int n= sc.nextInt();
+        int []arr=new int[n];
+        System.out.println("Please enter Element of array");
+        for(int i=0;i<n;i++){
+            arr[i]= sc.nextInt();
+        }
+        System.out.println("Sorted Array");
+        insertionsort(arr);
+        display(arr);
+    }
+}
+//out put of my code
+//Please Enter Length of Array=
+//        5
+//        Please enter Element of array
+//        43
+//        21
+//        43
+//        12
+//        87
+//        Sorted Array
+//        12 21 43 43 87 
