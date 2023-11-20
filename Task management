@@ -1,0 +1,87 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Task {
+    private String name;
+    private String description;
+
+    public Task(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String toString() {
+        return "Task: " + name + "\nDescription: " + description;
+    }
+}
+
+class TaskManager {
+    private ArrayList<Task> tasks;
+
+    public TaskManager() {
+        this.tasks = new ArrayList<>();
+    }
+
+    public void addTask(Task task) {
+        tasks.add(task);
+        System.out.println("Task added successfully!");
+    }
+
+    public void displayTasks() {
+        if (tasks.isEmpty()) {
+            System.out.println("No tasks available.");
+        } else {
+            for (Task task : tasks) {
+                System.out.println(task);
+                System.out.println("---------------");
+            }
+        }
+    }
+}
+
+public class basibSTL {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        TaskManager taskManager = new TaskManager();
+
+        while (true) {
+            System.out.println("\nTask Management System");
+            System.out.println("1. Add Task");
+            System.out.println("2. Display Tasks");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    scanner.nextLine(); // Consume the newline character
+                    System.out.print("Enter task name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter task description: ");
+                    String description = scanner.nextLine();
+
+                    Task task = new Task(name, description);
+                    taskManager.addTask(task);
+                    break;
+                case 2:
+                    taskManager.displayTasks();
+                    break;
+                case 3:
+                    System.out.println("Exiting the program. Goodbye!");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please enter a valid option.");
+            }
+        }
+    }
+}
