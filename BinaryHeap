@@ -1,0 +1,40 @@
+package genraticttree;
+import java.util.*;
+public class allfunctionofgt {
+    //Create swap function
+    static void swap(List<Integer>heap,int l,int r){
+        int temp=heap.get(l);
+        heap.set(l, heap.get(r));
+        heap.set(r,temp);
+    }
+   //create push function in mimheap
+   private static void push_up_in_minheal(List<Integer>heap,int index){
+        //parent of child node
+       int parent_index=(index-1)/2;
+       //until root reached or correct position
+       if(index==0||heap.get(parent_index)< heap.get(index))return;
+    //swap
+       swap(heap,index,parent_index);
+       push_up_in_minheal(heap,parent_index);
+    }
+    //insert a value in minheap
+    static void insert_in_minheap(List<Integer>heap,int element){//element alwage add in last of heap
+        //last add
+        heap.add(element);
+        int index= heap.size()-1;
+        push_up_in_minheal(heap,index);
+
+    }
+    public static void main(String[] args) {
+        List<Integer>heap=new ArrayList<>();
+        heap.add(10);
+        heap.add(20);
+        heap.add(30);
+        heap.add(40);
+        heap.add(50);
+        System.out.print(heap);//[10, 20, 30, 40, 50]
+        insert_in_minheap(heap,5);
+        System.out.println(heap);//[5, 20, 10, 40, 50, 30]
+
+    }
+}
