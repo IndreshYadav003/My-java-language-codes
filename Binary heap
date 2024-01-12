@@ -1,0 +1,9 @@
+package genraticttree;
+import java.util.*;
+public class allfunctionofgt {
+    //Create swap function
+    static void swap(List<Integer>heap,int l,int r){
+        int temp=heap.get(l);
+        heap.set(l, heap.get(r));
+        heap.set(r,temp);
+    }
