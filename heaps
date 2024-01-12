@@ -1,0 +1,172 @@
+package genraticttree;
+import java.util.*;
+public class allfunctionofgt {
+    //Create swap function
+    static void swap(List<Integer>heap,int l,int r){
+        int temp=heap.get(l);
+        heap.set(l, heap.get(r));
+        heap.set(r,temp);
+    }
+   //create push function in mimheap
+   private static void push_up_in_minheap(List<Integer>heap,int index){
+        //parent of child node
+       int parent_index=(index-1)/2;
+       //until root reached or correct position
+       if(index==0||heap.get(parent_index)< heap.get(index))return;
+    //swap
+       swap(heap,index,parent_index);
+       push_up_in_minheap(heap,parent_index);
+    }
+    private static void push_up_in_maxheap(List<Integer>heap,int index){
+        //parent of child node
+        int parent_index=(index-1)/2;
+        //until root reached or correct position
+        if(index==0||heap.get(parent_index)> heap.get(index)){
+            return;
+        }
+        //swap
+        swap(heap,index,parent_index);
+        push_up_in_maxheap(heap,parent_index);
+    }
+    //insert a value in minheap
+    static void insert_in_minheap(List<Integer>heap,int element){//element alwage add in last of heap
+        //last add
+        heap.add(element);
+        int index= heap.size()-1;
+        push_up_in_minheap(heap,index);
+
+    }
+    static void insert_in_maxheap(List<Integer>heap,int element ){//element alwage add in last of heap
+        //last add
+        heap.add(element);
+        int index= heap.size()-1;
+        push_up_in_maxheap(heap,index);
+    }
+  private  static void push_down_in_minheap(List<Integer>heap,int index) {
+        int n = heap.size() - 1;
+        if (index == n) return;
+        int left = (2 * index) + 1;
+        int right = (2 * index) + 2;
+        int smallest = index;
+        if (left <= n && heap.get(left) < heap.get(smallest)) {
+            smallest= left;
+        }
+        if (right <= n && heap.get(right) < heap.get(smallest)) {smallest= right;
+        }
+        if (smallest==index)return;
+        swap(heap,index,smallest);
+        push_down_in_minheap(heap,smallest);
+    }
+    private   static void delete_in_minheap(List<Integer>heap){// top element is delete
+        swap(heap,0,heap.size()-1);
+        heap.remove(heap.size()-1);
+        push_down_in_minheap(heap,0);
+    }
+    private  static void push_down_in_maxheap(List<Integer>heap,int index) {
+        int n = heap.size() - 1;
+        if (index == n) return;
+        int left = (2 * index) + 1;
+        int right = (2 * index) + 2;
+        int greastest = index;
+        if (left <= n && heap.get(left) > heap.get(greastest)) {
+            greastest = left;
+        }
+        if (right <= n && heap.get(right) > heap.get(greastest)) {
+            greastest= right;
+        }
+        if (greastest==index)return;
+        swap(heap,index,greastest);
+        push_down_in_minheap(heap,greastest);
+    }
+    private   static void delete_in_maxheap(List<Integer>heap){// top element is delete
+        swap(heap,0,heap.size()-1);
+        heap.remove(heap.size()-1);
+        push_down_in_minheap(heap,0);
+    }
+    //make haeapify
+    private static  void heapify(List<Integer>arr){// build heap
+        int  first_non__leaf_node=((arr.size()-1)-1)/2;//last element ka parent
+        for(int i=first_non__leaf_node;i>=0;i--){
+            push_down_in_Minheap(arr,i,arr.size()-1);
+        }
+    }
+    private static void push_down_in_Minheap(List<Integer>heap,int index,int n){
+        if(index==n)return;
+        if (index == n) return;
+        int left = (2 * index) + 1;
+        int right = (2 * index) + 2;
+        int smallest = index;
+        if (left <= n && heap.get(left) < heap.get(smallest)) {
+            smallest= left;
+        }
+        if (right <= n && heap.get(right) < heap.get(smallest)) {
+            smallest= right;
+        }
+        if (smallest==index)return;
+        swap(heap,index,smallest);
+        push_down_in_minheap(heap,smallest);
+    }
+    // heapsort
+    //sort in decebding order
+    private static void heapsort(List<Integer>arr){
+        heapify(arr);
+        int n=arr.size()-1;
+        for(int i=n;i>0;i--){
+            swap(arr,0,i);
+            push_down_in_Minheap(arr,0,i-1);
+        }
+    }
+    private static  void Heapify1(List<Integer>arr){// build heap
+        int  first_non__leaf_node=((arr.size()-1)-1)/2;//last element ka parent
+        for(int i=first_non__leaf_node;i>=0;i--){
+            push_down_in_Minheap(arr,i,arr.size()-1);
+        }
+    }
+    private static void push_down_in_Maxheap(List<Integer>heap,int index,int n){
+        if(index==n)return;
+        if (index == n) return;
+        int left = (2 * index) + 1;
+        int right = (2 * index) + 2;
+        int greastest = index;
+        if (left <= n && heap.get(left) > heap.get(greastest)) {
+            greastest= left;
+        }
+        if (right <= n && heap.get(right) > heap.get(greastest)) {
+            greastest= right;
+        }
+        if (greastest==index)return;
+        swap(heap,index,greastest);
+        push_down_in_minheap(heap,greastest);
+    }
+    // heapsort
+    //sort in decebding order
+    private static void Heapsort1(List<Integer>arr){
+        heapify(arr);
+        int n=arr.size()-1;
+        for(int i=n;i>0;i--){
+            swap(arr,0,i);
+            push_down_in_Minheap(arr,0,i-1);
+        }
+    }
+
+    public static void main(String[] args) {
+        List<Integer>heap=new ArrayList<>();
+        heap.add(90);
+        heap.add(80);
+        heap.add(70);
+        heap.add(20);
+        heap.add(10);
+        heap.add(50);
+        heap.add(60);
+        System.out.print(heap);//[90, 80, 70, 20, 10, 50, 60]
+        System.out.println();
+        heapify(heap);
+     System.out.println(heap);//[10, 20, 50, 90, 80, 70, 60]
+        heapsort(heap);
+        System.out.println(heap);//[10, 60, 20, 70, 50, 80, 90]
+        Heapify1(heap);
+        System.out.println(heap);//[10, 50, 20, 70, 60, 80, 90]
+        Heapsort1(heap);
+        System.out.println(heap);//[10, 20, 50, 60, 70, 80, 90]
+    }
+}
