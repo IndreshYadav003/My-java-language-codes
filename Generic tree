@@ -1,0 +1,134 @@
+package genericTree;
+import  java.util.*;
+public class implementationOfGenericTree{
+        // Create a Node for a generic tree
+        private static class Node {
+            int value;
+            List<Node> child;
+
+            Node(int value) {
+                this.value = value;
+                child = new ArrayList<>();
+            }
+        }
+        //node function
+    static void nodevalue(Node root){
+        root.child.add(new Node(5));
+        root.child.add(new Node(11));
+        root.child.add(new Node(63));
+        root.child.get(0).child.add(new Node(1));
+        root.child.get(0).child.add(new Node(4));
+        root.child.get(0).child.add(new Node(8));
+        root.child.get(1).child.add(new Node(6));
+        root.child.get(1).child.add(new Node(7));
+        root.child.get(1).child.add(new Node(15));
+        root.child.get(2).child.add(new Node(31));
+        root.child.get(2).child.add(new Node(55));
+        root.child.get(2).child.add(new Node(65));
+    }
+
+        // Preorder Traversal
+        static void preorderTraversal(Node root) {
+            if (root.child.isEmpty()) {
+                System.out.print(root.value + " ");
+                return;
+            }
+            System.out.print(root.value + " ");
+            int n = root.child.size();
+            for (int i = 0; i < n; i++) {
+                preorderTraversal(root.child.get(i));
+            }
+        }
+        // postorderTervarsal
+        static void postorderTraversal(Node root) {//child->root
+            if (root.child.isEmpty()) {
+                System.out.print(root.value + " ");
+                return;
+            }
+            int n = root.child.size();
+            for (int i = 0; i < n; i++) {
+                preorderTraversal(root.child.get(i));
+            }
+            System.out.print(root.value + " ");
+        }
+        // BST->level wise trevarsal
+    static void levelorderTervarsal(Node root) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            Node currenrnode=queue.peek();
+            System.out.print(currenrnode.value+" ");
+            queue.remove();
+            int noOfChild=currenrnode.child.size();
+            for(int i=0;i<noOfChild;i++){
+                queue.add(currenrnode.child.get(i));
+            }
+        }
+    }
+    // zigzag order
+    static  void printNodeList(List<Node>nodeList){
+        for(int i=0;i<nodeList.size();i++){
+            System.out.print(nodeList.get(i).value+" ");
+        }
+        System.out.println();
+}
+static void reverse(int n){
+   List<Node>nodeList=new ArrayList<>();
+    for(int i=n;i>=0;i--){
+        nodeList.get(i);
+    }
+}
+
+    static void zigzagorderTervarsal(Node root) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        boolean flag = false;
+        while (!queue.isEmpty()) {
+            int levelsize = queue.size();
+            List<Node> currentLevel = new ArrayList<>();
+            while (levelsize-- > 0) {
+                Node currentNode = queue.peek();
+                currentLevel.add(currentNode);
+                queue.remove();
+                int noOfChild = currentNode.child.size();
+                for (int i = 0; i < noOfChild; i++) {
+                    queue.add(currentNode.child.get(i));
+                }
+            }
+            if (flag = false) {
+                printNodeList(currentLevel);
+            } else {
+                reverse(levelsize);
+                printNodeList(currentLevel);
+            }
+            flag = !false;
+        }
+    }
+    // find max value in any ary tree
+    private static int findmax(Node root){
+            if(root.child.isEmpty())return root.value;
+            int maxTillNow= root.value;
+            int n=root.child.size();
+            for (int i=0;i<n;i++){
+                int childmax=findmax(root.child.get(i));
+                if(childmax>maxTillNow){
+                    maxTillNow=childmax;
+                }
+            }
+            return maxTillNow;
+        }
+        public static void main(String[] args) {
+            Node root = new Node(30);
+           nodevalue(root);
+            preorderTraversal(root);//30 5 1 4 8 11 6 7 15 63 31 55 65
+            System.out.println();
+            postorderTraversal(root);//5 1 4 8 11 6 7 15 63 31 55 65 30
+            System.out.println();
+            levelorderTervarsal(root);//30 5 11 63 1 4 8 6 7 15 31 55 65
+            System.out.println();
+            zigzagorderTervarsal(root);//30//     5 11 63//   1 4 8 6 7 15 31 55 65
+            System.out.println();
+            System.out.println("find max value");
+            System.out.println( findmax(root));//65
+        }
+    }
