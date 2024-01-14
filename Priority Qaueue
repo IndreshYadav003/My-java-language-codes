@@ -1,0 +1,60 @@
+
+import java.util.*;
+
+public class typesOfPriorityQueue {
+    // Let's create a class according to me
+    private static class Student {
+        String name;
+        Integer rollno;
+        Integer marks;
+        String dob;
+    }
+
+    // We create a comparator according to priority
+    private static class StudentComparator implements Comparator<Student> {
+        // Overriding
+        //  @Override
+        public int compare(Student s1, Student s2) {
+            if (s2.marks > s1.marks) return 1;
+            else if (s2.marks < s1.marks) return -1;
+            else {
+                if (s1.rollno > s2.rollno) return 1;
+                else if (s1.rollno < s2.rollno) return -1;
+                else return 0;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        PriorityQueue<Student> studentsPriorityQueue = new PriorityQueue<>(new StudentComparator());
+        Student harsh = new Student();
+        harsh.name = "Harsh";
+        harsh.rollno = 23;
+        harsh.dob = "04-09-3009";
+        harsh.marks = 43;
+
+        Student vipin = new Student();
+        vipin.name = "Vipin";
+        vipin.rollno = 343;
+        vipin.dob = "23-02-2342";
+        vipin.marks = 132;
+
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(vipin);
+        studentList.add(harsh);
+        Collections.sort(studentList, new StudentComparator());
+
+        studentsPriorityQueue.add(harsh);
+        studentsPriorityQueue.add(vipin);
+
+        System.out.println(studentsPriorityQueue.peek().name);
+        System.out.println(studentsPriorityQueue.peek().rollno);
+        System.out.println(studentsPriorityQueue.peek().marks);
+        System.out.println(studentsPriorityQueue.peek().dob);
+    }
+}
+//out put of my code
+//Vipin
+//343
+//132
+//23-02-2342
