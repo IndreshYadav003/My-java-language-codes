@@ -11,7 +11,7 @@ public class simpleFibonic {
         //count calls
             calls++;
         // main case
-         return fibo(n-1)+fibo(n-1);
+         return fibo(n-1)+fibo(n-2);
     }
 
     public static void main(String[] args) {
