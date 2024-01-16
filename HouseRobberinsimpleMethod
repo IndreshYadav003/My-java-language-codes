@@ -1,0 +1,23 @@
+package dynamicProgramming;
+import  java.util.*;
+public class houseRobber {
+static int calls=0;
+private static int robber(int[]house,int index){
+   // base cose
+    if(index== house.length-1)return house[index];
+    if(index>= house.length)return 0;
+    int pick=house[index]+robber(house,index+2);
+    int Not_pick=robber(house,index+1);
+    calls++;
+    return Math.max(pick,Not_pick);
+}
+
+    public static void main(String[] args) {
+        int []house={9,1,3,8,2,7,6};//{9,1,3,8};
+        System.out.println(robber(house,0));
+        System.out.println("numbers of calls="+""+calls);
+    }
+
+    }
+
+
