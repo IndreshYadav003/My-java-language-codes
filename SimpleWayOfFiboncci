@@ -1,0 +1,31 @@
+package dynamicProgramming;
+import java.util.*;
+public class simpleFibonic {
+    static int calls=0;
+    //create simple fibonic
+    private static int fibo(int n){
+        // base case
+        if(n==0||n==1){
+            return n;
+        }
+        //count calls
+            calls++;
+        // main case
+         return fibo(n-1)+fibo(n-1);
+    }
+
+    public static void main(String[] args) {
+        Scanner ab=new Scanner(System.in);
+        int a;
+        System.out.println("Please Enter Number");
+        a=ab.nextInt();
+        System.out.print("Fibonic of this position=");
+        System.out.print(fibo(a));
+        System.out.println();
+        System.out.print("Number times function calls=");
+        System.out.print(calls);
+
+    }
+}
+
+
