@@ -1,0 +1,22 @@
+package dynamicProgramming;
+import java.util.*;
+public class bestCaseOfTabulation {
+    public static void main(String[] args) {
+        Scanner ab=new Scanner(System.in);
+        int a;
+        System.out.println("Please Enter Number");
+        a=ab.nextInt();
+        int []dp=new int[a+1];
+        int prev1=1;
+        int prev2=1;
+        int current=0;
+        for (int i=3;i<=a;i++){
+            current=prev1+prev2;
+            prev1=prev2;
+            prev2=current;
+            dp[i]=dp[i-1]+dp[i-2];
+        }
+        System.out.println(current);
+
+    }
+}
