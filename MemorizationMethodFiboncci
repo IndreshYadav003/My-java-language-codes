@@ -13,7 +13,7 @@ public class dynamicFibonic {
         // dynamic programming
         if(dp[n]!=-1)return dp[n];
         // main case
-         return dp[n]= fibo(n-1,dp)+fibo(n-1,dp);
+         return dp[n]= fibo(n-1,dp)+fibo(n-2,dp);
     }
 
     public static void main(String[] args) {
