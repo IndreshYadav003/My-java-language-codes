@@ -1,0 +1,25 @@
+package dynamicProgramming;
+import java.util.*;
+public class wayOfdecodumbrteringToString {
+    static int calls=0;
+    private static  int no_of_way(String number,int index){
+        if(index<=0)return 1;
+        int not_combine=0;
+        if(number.charAt(index)!='0')
+            not_combine=no_of_way(number,index-1);
+            int combine = 0;
+
+            if(number.charAt(index-1)=='1'||(number.charAt(index-1)=='2'&&number.charAt(index)<='6')){
+                combine=no_of_way(number,index-2);
+            }
+            calls++;
+            return not_combine+combine;
+        }
+        public static void main(String[]args){
+        String number="11126";
+            System.out.println(no_of_way(number,number.length()-1));
+            System.out.println(calls);
+        }
+
+    
+}
