@@ -1,0 +1,24 @@
+package dynamicProgramming;
+import java.util.*;
+public class coin {
+    private static int rec(List<Integer>coins,int sum,int index){
+        // that is our base case
+        if(index==0){
+            if(sum%coins.get(index)==0)return 1;
+            else return 0;
+        }
+        int pick=0;
+        if(sum>=coins.get(index))
+            pick=rec(coins,sum-coins.get(index),index);
+        int notpick=rec(coins,sum,index-1);
+        return pick+notpick;
+    }
+
+    public static void main(String[] args) {
+        int sum=4;
+        List<Integer>coins=List.of(1,2,3);
+        int n=coins.size();
+        System.out.println(rec(coins,sum,n-1));
+    }
+
+}
