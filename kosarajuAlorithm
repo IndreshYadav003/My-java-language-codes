@@ -1,0 +1,89 @@
+package graph;
+import java.util.*;
+public class kasarajuAlgorithm {
+    // create class
+    public  static   class  Edge{
+        int src;
+        int dest;
+        public  Edge(int src,int dest){
+            this.src=src;
+            this.dest=dest;
+        }
+    }
+// create graph
+    public  static void  creategraph(ArrayList<Edge>[]graph){
+        for(int i=0;i< graph.length;i++){
+            graph[i]=new ArrayList<Edge>();
+        }
+        graph[0].add(new Edge(0,2));
+        graph[0].add(new Edge(0,3));
+        graph[1].add(new Edge(1,0));
+        graph[2].add(new Edge(2,1));
+        graph[3].add(new Edge(3,4));
+    }
+    //topsort
+    public static void topsort(ArrayList<Edge>[]graph,int curr,boolean []visit,Stack<Integer>s){
+        visit[curr]=true;
+        for(int i=0;i<graph[curr].size();i++){
+            Edge e=graph[curr].get(i);
+            if(!visit[e.dest]){
+                topsort(graph, e.dest,visit,s);
+            }
+        }
+        s.push(curr);
+    }
+    // create dfs
+    public  static void  dfs(ArrayList<Edge>[]graph,int curr,boolean []visit){
+        visit[curr]=true;
+        System.out.println(curr+" ");
+        for(int i=0;i<graph[curr].size();i++){
+            Edge e=graph[curr].get(i);
+            if(!visit[e.dest]){
+                dfs(graph, e.dest, visit);
+            }
+        }
+    }
+    // create kosarajuAlgorithmv
+    public static  void  kosarajuAlg(ArrayList<Edge>[]graph,int v) {
+        Stack<Integer> s = new Stack<>();
+        boolean []visit = new boolean[v];
+        for (int i = 0; i < v; i++) {
+            if (!visit[i]) {
+                topsort(graph, i, visit, s);
+            }
+        }
+            ArrayList<Edge> []transpose = new ArrayList[v];
+            for (int i = 0; i < graph.length; i++) {
+                visit[i]=false;
+                transpose[i] = new ArrayList<>();
+            }
+            for (int i = 0; i < v; i++) {
+                for (int j = 0; j < graph[i].size(); j++) {
+                    Edge e = graph[i].get(j);
+                    transpose[e.dest].add(new Edge(e.dest, e.src));
+                }
+            }
+            while (!s.isEmpty()) {
+                int curr = s.pop();
+                if (!visit[curr]) {
+                    dfs(transpose, curr, visit);
+                    System.out.println();
+                }
+            }
+        }
+    public static void main(String[] args) {
+     int v=5;
+     ArrayList<Edge>[]graph=new ArrayList[v];
+     creategraph(graph);
+     kosarajuAlg(graph,v);
+        System.out.println();
+
+    }
+}
+//0 
+//1 
+//2 
+//
+//3 
+//
+//4 
