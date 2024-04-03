@@ -1,0 +1,26 @@
+import java.util.*;
+public class Main{
+	public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Please Enter Number First");
+	int a=sc.nextInt();
+	System.out.println("Please Enter Number Second");
+	int b=sc.nextInt();
+	System.out.println("Please Enter Which opertion you want");
+	int op=sc.nextInt();
+	if(op==1){
+	System.out.println("Addition of that number"+""+a+b);
+	}
+	if(op==2)
+	{
+   System.out.println("Subtraction of that number"+" "+( a-b));
+	}
+    if(op==3){
+  System.out.println("Multipal of that number"+""+a*b);
+    }
+  if(op==4){
+    	System.out.println("division of that number"+""+a/b);
+}
+
+}
+}
