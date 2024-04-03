@@ -1,0 +1,16 @@
+import java.util.*;
+public class Main{
+public static void main(String[] args) {
+   Scanner sc=new Scanner(System.in);
+    String ch=sc.nextLine();
+   if(ch.length()<8){
+    System.out.println("Weak");
+   }
+   else if(ch.length()>8 &&ch.length()<12)
+   {
+    System.out.println("Meadium");
+   }
+   else 
+   System.out.println("Strong");
+	}
+}
