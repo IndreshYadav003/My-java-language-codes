@@ -1,0 +1,19 @@
+import java.util.*;
+public class mazePath {
+    public  static int path(int n,int m){
+        if(n==1||m==1)return 1;
+        int rightmove=path(n,m-1);
+        int downmove=path(n-1,m);
+        return  rightmove+downmove;
+    }
+    public static void main(String[]argu){
+        System.out.println("Give size of maze");
+        Scanner sc=new Scanner(System.in);
+        System.out.print("give row size=");
+        int n=sc.nextInt();
+        System.out.print("give col size=");
+        int m= sc.nextInt();
+        System.out.print("number of path is=");
+        System.out.println( path(n,m));
+    }
+}
