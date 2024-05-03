@@ -1,0 +1,13 @@
+
+
+class VariableNumberOfArgumentInFunction{
+    public static int sun(int...a){
+        int sum=0;
+        for(int element:a)
+        sum+=element;
+        return sum;
+    }
+    public static void main(String[] args) {
+        System.out.println(sun(1,2,3,3,23));
+    }
+}
