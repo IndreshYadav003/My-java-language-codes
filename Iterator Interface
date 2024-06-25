@@ -1,0 +1,14 @@
+import java.util.ArrayList;
+import java.util.Iterator;
+public class Main
+{
+	public static void main(String[] args) {
+	      ArrayList<Integer>obj=new ArrayList<>();
+	      obj.add(12);
+	      obj.add(23);
+	      Iterator it=obj.iterator();
+	      while(it.hasNext()){
+	          System.out.print(it.next());
+	      }
+	}
+}
