@@ -1,0 +1,17 @@
+import java.util.ArrayList;//class
+import java.util.Collection;//Interface
+public class Main
+{
+	public static void main(String[] args) {
+	Collection ab=new ArrayList<>();
+	ab.add(34);
+	ab.add(54);
+	ab.add(433);
+	ab.add(87);
+	System.out.print("Aur ArrayList");
+   System.out.print(ab);
+   System.out.print("Remove element our array list");
+   ab.remove(54);
+	System.out.print(ab);
+	}
+}
