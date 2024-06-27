@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList<Integer> list = new LinkedList<>();
+
+        list.add(45);
+        list.add(54);
+        list.add(432);
+        list.add(42323);
+        list.add(87);
+        list.add(5344);
+        list.add(22);
+
+        System.out.println("Our linked list = " + list);
+        System.out.println("Size of our list = " + list.size());
+
+        list.pop();
+        list.pop();
+        list.pop();
+
+        System.out.println("After deleting, our linked list = " + list);
+        System.out.println("After deleting, size of our list = " + list.size());
+
+        list.pop();
+    }
+}
