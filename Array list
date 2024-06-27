@@ -1,0 +1,28 @@
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        
+        arr.add(54);
+        arr.add(-5);
+        arr.add(55);
+        arr.add(7);
+        arr.add(3);
+        arr.add(66);
+        arr.add(2);
+        
+        System.out.println("Before deleting elements, our array: " + arr);
+        
+        int i = arr.size() - 1;
+        
+        while (i >= 0 ) {
+            if (arr.get(i) % 5 == 0 || arr.get(i) > 70 || arr.get(i) % 3 == 0 || arr.get(i) == 0) {
+                arr.remove(i);
+            }
+            i--;
+        }
+        
+        System.out.println("After deleting elements, our array: " + arr);
+    }
+}
