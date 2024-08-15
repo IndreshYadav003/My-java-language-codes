@@ -1,20 +1,3 @@
-import java.util.*;
-
-class Student {
-    int rolno;
-    String name;
-
-    public Student(int rolno, String name) {
-        this.rolno = rolno;
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{rolno=" + rolno + ", name='" + name + "'}";
-    }
-}
-
 public class Main {
     public static void main(String[] args) {
    Comparator<Integer> com =( Integer s1,Integer s2)-> {
