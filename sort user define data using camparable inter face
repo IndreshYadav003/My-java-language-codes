@@ -1,0 +1,36 @@
+import java.util.*;
+
+class Student implements Comparable<Student> {
+    int rolno;
+    String name;
+
+    public Student(int rolno, String name) {
+        this.rolno = rolno;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{rolno=" + rolno + ", name='" + name + "'}";
+    }
+
+    @Override
+    public int compareTo(Student s) {
+        return Integer.compare(this.rolno, s.rolno);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Student> ST = new ArrayList<>();
+        ST.add(new Student(223, "wew"));
+        ST.add(new Student(23, "ww"));
+        ST.add(new Student(2, "aaa"));
+
+        Collections.sort(ST);
+
+        for (Student a : ST) {
+            System.out.print(a + " ");
+        }
+    }
+}
