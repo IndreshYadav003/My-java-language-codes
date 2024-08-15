@@ -1,0 +1,36 @@
+import java.util.*;
+
+class Student {
+    int rolno;
+    String name;
+
+    public Student(int rolno, String name) {
+        this.rolno = rolno;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{rolno=" + rolno + ", name='" + name + "'}";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+   Comparator<Integer> com =( Integer s1,Integer s2)-> {
+                return s1 > s2? 1 : -1;
+            };
+        
+
+        List<Integer> ST = new ArrayList<>();
+        ST.add(86);
+        ST.add(2);
+        ST.add(23);
+
+        Collections.sort(ST,com);
+
+        for (Integer a:ST) {
+            System.out.print(a + " ");
+        }
+    }
+}
