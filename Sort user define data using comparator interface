@@ -1,0 +1,37 @@
+import java.util.*;
+
+class Student {
+    int rolno;
+    String name;
+
+    public Student(int rolno, String name) {
+        this.rolno = rolno;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{rolno=" + rolno + ", name='" + name + "'}";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Comparator<Student> com = new Comparator<Student>() {
+            public int compare(Student s1, Student s2) {
+                return s1.rolno > s2.rolno ? 1 : -1;
+            }
+        };
+
+        List<Student> ST = new ArrayList<>();
+        ST.add(new Student(223, "wew"));
+        ST.add(new Student(23, "ww"));
+        ST.add(new Student(2, "aaa"));
+
+        Collections.sort(ST, com);
+
+        for (Student a : ST) {
+            System.out.print(a + " ");
+        }
+    }
+}
