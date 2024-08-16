@@ -1,0 +1,20 @@
+package dynamicProgramming;
+
+@FunctionalInterface
+interface Myinterface {
+    public void say(String str);
+}
+
+ class FunctionalInterfaceExample implements Myinterface {
+    @Override
+    public void say(String str) {
+        System.out.println(str);
+    }
+}
+
+public class dp {
+    public static void main(String[] args){
+        FunctionalInterfaceExample f = new FunctionalInterfaceExample();
+        f.say("hdgjwsgvdbg;v");
+    }
+}
