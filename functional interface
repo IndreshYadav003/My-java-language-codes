@@ -1,0 +1,17 @@
+package dynamicProgramming;
+
+@FunctionalInterface
+interface Myinterface {
+    public void say(String str);
+}
+public class dp {
+    public static void main(String[] args){
+        Myinterface f = new Myinterface() {
+            @Override
+            public void say(String str) {
+       System.out.println(str);
+            }
+        };
+        f.say("hdgjwsgvdbg;v");
+    }
+}
